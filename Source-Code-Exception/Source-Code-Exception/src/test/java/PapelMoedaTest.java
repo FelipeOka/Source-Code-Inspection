@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
-
 import br.calebe.ticketmachine.core.PapelMoeda;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -17,51 +12,45 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PapelMoedaTest {
     
-    public PapelMoedaTest() {
-    }
-    
+    private PapelMoeda papelMoeda; // Variável de instância para testes
+
     @BeforeAll
     public static void setUpClass() {
+        // Executado uma vez antes de todos os testes
     }
     
     @AfterAll
     public static void tearDownClass() {
+        // Executado uma vez após todos os testes
     }
     
     @BeforeEach
     public void setUp() {
+        // Inicializa uma instância de PapelMoeda antes de cada teste
+        papelMoeda = new PapelMoeda(100, 5);  // Exemplo: valor de 100 e quantidade de 5
     }
     
     @AfterEach
     public void tearDown() {
+        // Executado após cada teste, pode ser usado para limpeza, se necessário
+        papelMoeda = null;  // Limpa a variável após o teste
     }
 
-    /**
-     * Test of getValor method, of class PapelMoeda.
-     */
+   
     @Test
     public void testGetValor() {
-        System.out.println("getValor");
-        PapelMoeda instance = null;
-        int expResult = 0;
-        int result = instance.getValor();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testando getValor");
+        int expResult = 100;  // Valor esperado
+        int result = papelMoeda.getValor();  // Chama o método
+        assertEquals(expResult, result);  // Verifica se o valor retornado é o esperado
     }
 
-    /**
-     * Test of getQuantidade method, of class PapelMoeda.
-     */
+  
     @Test
     public void testGetQuantidade() {
-        System.out.println("getQuantidade");
-        PapelMoeda instance = null;
-        int expResult = 0;
-        int result = instance.getQuantidade();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Testando getQuantidade");
+        int expResult = 5;  // Quantidade esperada
+        int result = papelMoeda.getQuantidade();  // Chama o método
+        assertEquals(expResult, result);  // Verifica se a quantidade retornada é a esperada
     }
-    
 }
