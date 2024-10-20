@@ -27,27 +27,25 @@ public class TicketMachineTest {
     public void testInserirInvalidMoeda() {
         try {
             // A máquina só aceita as denominações 2, 5, 10, 20, 50, 100.
-            // Vamos inserir uma quantia inválida, como 3.
             machine.inserir(3); // Quantia inválida
             fail("Esperado PapelMoedaInvalidaException, mas não foi lançada.");
         } catch (PapelMoedaInvalidaException e) {
-            // Exceção esperada, o teste deve passar
+            //o teste deve passar
         }
     }
 
     @Test
-    public void testGetSaldo() {
+    public void testGetSaldo() throws PapelMoedaInvalidaException {
         assertEquals(0, machine.getSaldo()); // Verifica se o saldo inicial é 0
         machine.inserir(20);
         assertEquals(20, machine.getSaldo()); // Verifica o saldo após inserir 20
     }
 
     @Test
-    public void testGetTroco() {
+    public void testGetTroco() throws PapelMoedaInvalidaException {
         machine.inserir(20); // Insere um valor maior que o do bilhete
         Iterator<PapelMoeda> troco = machine.getTroco();
         assertNotNull(troco); // Verifica se o troco não é nulo
-        // Verificação adicional pode ser feita dependendo da implementação da classe Troco
     }
 
     @Test
