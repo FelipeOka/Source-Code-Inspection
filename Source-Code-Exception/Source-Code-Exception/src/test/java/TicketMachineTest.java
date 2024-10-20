@@ -1,96 +1,69 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
-
 import br.calebe.ticketmachine.core.PapelMoeda;
 import br.calebe.ticketmachine.core.TicketMachine;
+import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
+import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
 import java.util.Iterator;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author Vitor
- */
 public class TicketMachineTest {
     
-    public TicketMachineTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
+    private TicketMachine machine;
+
     @BeforeEach
     public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+        // Inicializa uma máquina com um valor de bilhete fixo, por exemplo, 10.
+        machine = new TicketMachine(10);
     }
 
-    /**
-     * Test of inserir method, of class TicketMachine.
-     */
     @Test
-    public void testInserir() throws Exception {
-        System.out.println("inserir");
-        int quantia = 0;
-        TicketMachine instance = null;
-        instance.inserir(quantia);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testInserirValidMoeda() throws Exception {
+        machine.inserir(5); // Insere uma quantia válida
+        assertEquals(5, machine.getSaldo()); // Verifica se o saldo é atualizado corretamente
     }
 
-    /**
-     * Test of getSaldo method, of class TicketMachine.
-     */
+    @Test
+    public void testInserirInvalidMoeda() {
+        try {
+            // A máquina só aceita as denominações 2, 5, 10, 20, 50, 100.
+            // Vamos inserir uma quantia inválida, como 3.
+            machine.inserir(3); // Quantia inválida
+            fail("Esperado PapelMoedaInvalidaException, mas não foi lançada.");
+        } catch (PapelMoedaInvalidaException e) {
+            // Exceção esperada, o teste deve passar
+        }
+    }
+
     @Test
     public void testGetSaldo() {
-        System.out.println("getSaldo");
-        TicketMachine instance = null;
-        int expResult = 0;
-        int result = instance.getSaldo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(0, machine.getSaldo()); // Verifica se o saldo inicial é 0
+        machine.inserir(20);
+        assertEquals(20, machine.getSaldo()); // Verifica o saldo após inserir 20
     }
 
-    /**
-     * Test of getTroco method, of class TicketMachine.
-     */
     @Test
     public void testGetTroco() {
-        System.out.println("getTroco");
-        TicketMachine instance = null;
-        Iterator<PapelMoeda> expResult = null;
-        Iterator<PapelMoeda> result = instance.getTroco();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        machine.inserir(20); // Insere um valor maior que o do bilhete
+        Iterator<PapelMoeda> troco = machine.getTroco();
+        assertNotNull(troco); // Verifica se o troco não é nulo
+        // Verificação adicional pode ser feita dependendo da implementação da classe Troco
     }
 
-    /**
-     * Test of imprimir method, of class TicketMachine.
-     */
     @Test
-    public void testImprimir() throws Exception {
-        System.out.println("imprimir");
-        TicketMachine instance = null;
-        String expResult = "";
-        String result = instance.imprimir();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testImprimirComSaldoSuficiente() throws Exception {
+        machine.inserir(10); // Insere o valor exato do bilhete
+        String resultadoEsperado = "*****************\n*** R$ 10,00 ****\n*****************\n";
+        assertEquals(resultadoEsperado, machine.imprimir()); // Verifica a impressão correta
     }
-    
+
+    @Test
+    public void testImprimirComSaldoInsuficiente() {
+        try {
+            machine.imprimir(); // Tenta imprimir com saldo insuficiente
+            fail("Esperado SaldoInsuficienteException, mas não foi lançada.");
+        } catch (SaldoInsuficienteException e) {
+            // Exceção esperada, o teste deve passar
+        }
+    }
 }
