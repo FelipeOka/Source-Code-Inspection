@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: TicketMachineTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! -- in TicketMachineTest
+TicketMachineTest.testGetSaldo -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "br.calebe.ticketmachine.core.TicketMachine.getSaldo()" because "instance" is null
+	at TicketMachineTest.testGetSaldo(TicketMachineTest.java:62)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+TicketMachineTest.testGetTroco -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "br.calebe.ticketmachine.core.TicketMachine.getTroco()" because "instance" is null
+	at TicketMachineTest.testGetTroco(TicketMachineTest.java:76)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+TicketMachineTest.testImprimir -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "br.calebe.ticketmachine.core.TicketMachine.imprimir()" because "instance" is null
+	at TicketMachineTest.testImprimir(TicketMachineTest.java:90)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+TicketMachineTest.testInserir -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "br.calebe.ticketmachine.core.TicketMachine.inserir(int)" because "instance" is null
+	at TicketMachineTest.testInserir(TicketMachineTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
