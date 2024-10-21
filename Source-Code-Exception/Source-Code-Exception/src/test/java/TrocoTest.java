@@ -12,7 +12,7 @@ public class TrocoTest {
     @BeforeEach
     public void setUp() {
         // Inicializando com um valor para gerar o troco
-        troco = new Troco(186); // Exemplo: R$ 186,00 em notas
+        troco = new Troco(187); // Exemplo: R$ 186,00 em notas
     }
 
     @Test
@@ -59,5 +59,6 @@ public class TrocoTest {
         assertEquals(3, pm.getQuantidade(), "Devem haver três notas de 2");
 
         assertFalse(iterator.hasNext(), "Não deve haver mais notas");
+        
     }
 }
