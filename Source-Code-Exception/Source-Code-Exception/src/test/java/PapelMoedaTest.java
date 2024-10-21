@@ -53,4 +53,6 @@ public class PapelMoedaTest {
         int result = papelMoeda.getQuantidade();  // Chama o método
         assertEquals(expResult, result);  // Verifica se a quantidade retornada é a esperada
     }
+    
+    //todos os testes passaram
 }
