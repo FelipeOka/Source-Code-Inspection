@@ -12,8 +12,8 @@ on:
   push:
     #branches: [ "testes_com_ticket_e_papelMoeda" ]
     branches: 
-    #  - master
-      - todos_os_testes
+      - master
+    #  - todos_os_testes
   #pull_request:
     #branches: [ "testes_com_ticket_e_papelMoeda" ]
 
