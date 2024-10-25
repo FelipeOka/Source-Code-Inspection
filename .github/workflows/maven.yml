@@ -29,20 +29,14 @@ jobs:
         java-version: '23'
         distribution: 'temurin'
         cache: maven
+    
     - name: Build with Maven
       #run: mvn -B package --file pom.xml
-      run: mvn package
+      #run: mvn package
+      run: mvn -f "Source-Code-Inspection/pom.xml" package
+    
     - name: Running tests
       #run: mvn test
-      
-      run: mvn test --file ./Source-Code-Inspection/src/test/java TrocoTest.java
-      #run: mvn -Dtest=TestName test
+      #run: mvn test --file ./Source-Code-Inspection/src/test/java 
 
-
-
-   
-
-
-
-
-
+      run: mvn -f "Source-Code-Inspection/pom.xml" clean install
