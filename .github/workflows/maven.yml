@@ -33,7 +33,7 @@ jobs:
     - name: Acessando diretório
       #run: mvn -B package --file pom.xml
       #run: mvn package
-      run: cd "Source-Code-Inspection"
+      run: cd "Source-Code-Inspection/Source-Code-Inspection"
     
     - name: Build with Maven
       #run: mvn -B package --file pom.xml
