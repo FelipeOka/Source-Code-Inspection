@@ -38,4 +38,17 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>com.mycompany.source.code.exception.SourceCodeException</exec.mainClass>
     </properties>
+
+     <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M7</version>
+          <configuration>
+            <testSourceDirectory>Source-Code-Inspection/src/test/java</testSourceDirectory> <!-- Defina o diretório personalizado aqui -->
+          </configuration>
+        </plugin>
+      </plugins>
+    </build>
 </project>
