@@ -44,4 +44,4 @@ jobs:
       #run: mvn test
       #run: mvn test --file ./Source-Code-Inspection/src/test/java 
 
-      run: mvn -f "Source-Code-Inspection/pom.xml" clean install
+      run: mvn -f "pom.xml" clean install
